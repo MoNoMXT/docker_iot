@@ -24,10 +24,12 @@ services:
       - mariadb
   clientemqtt:
     image: clientemqtt
+    build:
+      context: ./clienteMqtt
     container_name: clientemqtt
     environment:
       - TZ=America/Argentina/Buenos_Aires 
-      - SERVIDOR=${SERVIDOR} #Se reemplazará por la env var SERVIDOR defineda en .env
+      - SERVIDOR=${SERVIDOR} #Se reemplazará por la env var SERVIDOR definida en .env
       - TOPICO=${TOPICO}
       - MARIADB_SERVER=${MARIADB_SERVER}
       - MARIADB_USER=${MARIADB_USER}
@@ -44,3 +46,6 @@ services:
       - 1883:1883
       - 8883:8883
     restart: unless-stopped
+    volumes:
+      - ~/docker/mosquitto/config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ~/docker/mosquitto/config:/mosquitto/config
