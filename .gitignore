@@ -145,3 +145,6 @@ swag/nginx/*
 !swag/nginx/proxy-confs/
 swag/nginx/proxy-confs/*
 !swag/nginx/proxy-confs/crud.subfolder.conf
+
+.gitbak/
+Bak/
