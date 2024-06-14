@@ -38,11 +38,11 @@ def registrar():
 
         # Ensure username was submitted
         if not request.form.get("usuario"):
-            return "el campo usuario es oblicatorio"
+            return "el campo usuario es obligatorio"
 
         # Ensure password was submitted
         elif not request.form.get("password"):
-            return "el campo contraseña es oblicatorio"
+            return "el campo contraseña es obligatorio"
 
         passhash=generate_password_hash(request.form.get("password"), method='scrypt', salt_length=16)
         cur = mysql.connection.cursor()
@@ -60,10 +60,10 @@ def login():
     if request.method == "POST":
         # Ensure username was submitted
         if not request.form.get("usuario"):
-            return "el campo usuario es oblicatorio"
+            return "el campo usuario es obligatorio"
         # Ensure password was submitted
         elif not request.form.get("password"):
-            return "el campo contraseña es oblicatorio"
+            return "el campo contraseña es obligatorio"
 
         cur = mysql.connection.cursor()
         cur.execute("SELECT * FROM usuarios WHERE usuario LIKE %s", (request.form.get("usuario"),))
