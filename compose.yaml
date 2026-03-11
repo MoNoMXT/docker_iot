@@ -148,6 +148,7 @@ services:
     ports:
       - 1880:1880
     environment:
+      - TZ=America/Argentina/Buenos_Aires 
       - MQTT_USR=${MQTT_USR}
       - MQTT_PASS=${MQTT_PASS}
       - PUERTO_MQTTS=${PUERTO_MQTTS}
